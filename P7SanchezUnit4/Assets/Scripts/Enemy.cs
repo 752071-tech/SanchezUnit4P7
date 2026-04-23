@@ -5,12 +5,16 @@ public class Enemy : MonoBehaviour
     public float speed = 3.0f;
     private Rigidbody enemyRb;
     private GameObject player;
+    public SpawnManagerX spawnX;
+    public float levelSpeedIncreaser = 60.0f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        spawnX = GameObject.FindGameObjectWithTag("Respawner").GetComponent<SpawnManagerX>();
+        speed = spawnX.waveCount * levelSpeedIncreaser;
     }
 
     // Update is called once per frame
